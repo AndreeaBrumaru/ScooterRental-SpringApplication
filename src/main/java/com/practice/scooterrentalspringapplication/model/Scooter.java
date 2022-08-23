@@ -14,6 +14,7 @@ public class Scooter {
     private Boolean inUse;
     private Long battery;
     private Time timeRidden;
+    @Enumerated(EnumType.ORDINAL)
     private Condition condition;
 
     //Constructors
