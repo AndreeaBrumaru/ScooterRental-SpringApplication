@@ -2,6 +2,7 @@ package com.practice.scooterrentalspringapplication.service;
 
 import com.practice.scooterrentalspringapplication.dto.UserDto;
 import com.practice.scooterrentalspringapplication.dto.UserReportDto;
+import com.practice.scooterrentalspringapplication.exception.*;
 import com.practice.scooterrentalspringapplication.model.Report;
 import com.practice.scooterrentalspringapplication.model.Scooter;
 import com.practice.scooterrentalspringapplication.model.User;
@@ -40,8 +41,7 @@ public class UserService implements IUserService {
         List<Report> reports = userRepository.findUserOrders(user);
         if(reports.isEmpty())
         {
-            //TODO Replace exception(no data found)
-            throw new RuntimeException();
+            throw new NoDataFoundException();
         }
         return reports.stream().map(this::convertToDto).collect(Collectors.toList());
     }
@@ -59,29 +59,21 @@ public class UserService implements IUserService {
         }
         else if(user.getPreviousRidePaid() && report.getPaid())
         {
-            //TODO Replace exception(user already paid the ride)
-            throw new RuntimeException();
+            throw new RideAlreadyPaidException();
         }
         else
         {
-            //TODO Replace exception (exceptional error occured)
-            throw new RuntimeException();
+            throw new WeirdErrorException();
         }
     }
 
     @Override
     public void startRide(Long scooterId, Long userId, Long timeRidden) {
-        //TODO Replace exception (no scooter found)
-        Scooter scooter = scooterRepository.findById(scooterId).orElseThrow(RuntimeException::new);
+        Scooter scooter = scooterRepository.findById(scooterId).orElseThrow(ScooterNotFoundException::new);
         User user = findUserService(userId);
-        if(user.getScooter() != null)
+        if(user.getScooter() != null || scooter.getInUse())
         {
-            //TODO Replace exception (user already has a ride)
-            throw new RuntimeException();
-        }
-        if(scooter.getInUse()){
-            //TODO Replace exception(scooter already in use)
-            throw new RuntimeException();
+            throw new RideInProgressException();
         }
 
         user.setScooter(scooter);
@@ -92,8 +84,7 @@ public class UserService implements IUserService {
         scooter.setBattery(scooter.getBattery() - usedBattery);
         if(scooter.getBattery() <0)
         {
-            //TODO Replace exception (cannot process ride, battery to low)
-            throw new RuntimeException();
+            throw new BatteryTooLowException();
         }
 
         userRepository.save(user);
@@ -107,8 +98,7 @@ public class UserService implements IUserService {
         Report report = new Report();
         if(user.getScooter() == null)
         {
-            //TODO Replace exception the user doesn't have a ride to end
-            throw new RuntimeException();
+            throw new NoRideToProcessException();
         }
 
         report.setScooter(scooter);
@@ -140,8 +130,7 @@ public class UserService implements IUserService {
         List<User> users = userRepository.findUserDebts();
         if(users.isEmpty())
         {
-            //TODO Replace exception (no data found)
-            throw new RuntimeException();
+            throw new NoDataFoundException();
         }
         return users.stream().map(this::convertToDto).collect(Collectors.toList());
     }
@@ -151,8 +140,7 @@ public class UserService implements IUserService {
         List<User> users = userRepository.findAll();
         if(users.isEmpty())
         {
-            //TODO Replace exception (no data found)
-            throw new RuntimeException();
+            throw new NoDataFoundException();
         }
         return users.stream().map(this::convertToDto).collect(Collectors.toList());
     }
@@ -211,7 +199,6 @@ public class UserService implements IUserService {
     //Find user, used only by UserService
     private User findUserService(Long userId)
     {
-        //TODO Replace exception(no user found)
-        return userRepository.findById(userId).orElseThrow(RuntimeException::new);
+        return userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
     }
 }
