@@ -17,6 +17,6 @@ public interface IUserService {
     List<UserDto> findAll();
     UserDto findById(Long userId);
     void addUser(User user);
-    void updateUser(Long userId, User updatedInfo);
+    void updateUser(Long userId, String username);
     void deleteUser(Long userId);
 }

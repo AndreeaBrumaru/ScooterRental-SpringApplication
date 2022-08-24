@@ -12,7 +12,6 @@ import com.practice.scooterrentalspringapplication.repository.UserRepository;
 import com.practice.scooterrentalspringapplication.service.interfaces.IUserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -41,7 +40,7 @@ public class UserService implements IUserService {
         List<Report> reports = userRepository.findUserOrders(user);
         if(reports.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception(no data found)
             throw new RuntimeException();
         }
         return reports.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -55,24 +54,35 @@ public class UserService implements IUserService {
         {
             user.setPreviousRidePaid(true);
             report.setPaid(true);
+            userRepository.save(user);
+            reportRepository.save(report);
         }
         else if(user.getPreviousRidePaid() && report.getPaid())
         {
-            //TODO Replace exception
+            //TODO Replace exception(user already paid the ride)
             throw new RuntimeException();
         }
         else
         {
-            //TODO Replace exception
+            //TODO Replace exception (exceptional error occured)
             throw new RuntimeException();
         }
     }
 
     @Override
     public void startRide(Long scooterId, Long userId, Long timeRidden) {
-        //TODO Replace exception
+        //TODO Replace exception (no scooter found)
         Scooter scooter = scooterRepository.findById(scooterId).orElseThrow(RuntimeException::new);
         User user = findUserService(userId);
+        if(user.getScooter() != null)
+        {
+            //TODO Replace exception (user already has a ride)
+            throw new RuntimeException();
+        }
+        if(scooter.getInUse()){
+            //TODO Replace exception(scooter already in use)
+            throw new RuntimeException();
+        }
 
         user.setScooter(scooter);
 
@@ -82,7 +92,7 @@ public class UserService implements IUserService {
         scooter.setBattery(scooter.getBattery() - usedBattery);
         if(scooter.getBattery() <0)
         {
-            //TODO Replace exception
+            //TODO Replace exception (cannot process ride, battery to low)
             throw new RuntimeException();
         }
 
@@ -95,6 +105,11 @@ public class UserService implements IUserService {
         User user = findUserService(userId);
         Scooter scooter = user.getScooter();
         Report report = new Report();
+        if(user.getScooter() == null)
+        {
+            //TODO Replace exception the user doesn't have a ride to end
+            throw new RuntimeException();
+        }
 
         report.setScooter(scooter);
         report.setUser(user);
@@ -106,7 +121,6 @@ public class UserService implements IUserService {
 
         user.setScooter(null);
         user.setPreviousRidePaid(paid);
-        user.getOrderHistory().add(report);
 
         scooter.setInUse(false);
         scooter.setTimeRidden(null);
@@ -126,7 +140,7 @@ public class UserService implements IUserService {
         List<User> users = userRepository.findUserDebts();
         if(users.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception (no data found)
             throw new RuntimeException();
         }
         return users.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -137,7 +151,7 @@ public class UserService implements IUserService {
         List<User> users = userRepository.findAll();
         if(users.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception (no data found)
             throw new RuntimeException();
         }
         return users.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -152,13 +166,15 @@ public class UserService implements IUserService {
     @Override
     public void addUser(User user) {
         user.setDeleted(false);
+        user.setScooter(null);
+        user.setPreviousRidePaid(true);
         userRepository.save(user);
     }
 
     @Override
-    public void updateUser(Long userId, User updatedInfo) {
+    public void updateUser(Long userId, String username) {
         User user = findUserService(userId);
-        user.setUsername(user.getUsername());
+        user.setUsername(username);
         userRepository.save(user);
     }
 
@@ -175,8 +191,8 @@ public class UserService implements IUserService {
         UserDto userdto = new UserDto();
         userdto.setUserId(user.getUserId());
         userdto.setUsername(user.getUsername());
+        userdto.setCNP(user.getCNP());
         userdto.setScooter(user.getScooter());
-        userdto.setOrderHistory(user.getOrderHistory());
         return userdto;
     }
 
@@ -195,7 +211,7 @@ public class UserService implements IUserService {
     //Find user, used only by UserService
     private User findUserService(Long userId)
     {
-        //TODO Replace exception
+        //TODO Replace exception(no user found)
         return userRepository.findById(userId).orElseThrow(RuntimeException::new);
     }
 }

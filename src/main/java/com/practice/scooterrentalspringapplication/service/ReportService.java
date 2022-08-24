@@ -1,7 +1,6 @@
 package com.practice.scooterrentalspringapplication.service;
 
 import com.practice.scooterrentalspringapplication.dto.ReportDto;
-import com.practice.scooterrentalspringapplication.dto.UserReportDto;
 import com.practice.scooterrentalspringapplication.model.Report;
 import com.practice.scooterrentalspringapplication.model.Scooter;
 import com.practice.scooterrentalspringapplication.model.User;
@@ -13,7 +12,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,7 +36,7 @@ public class ReportService implements IReportService {
         List<Report> reports = reportRepository.findAll();
         if(reports.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception (no data found)
             throw new RuntimeException();
         }
         return reports.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -46,12 +44,12 @@ public class ReportService implements IReportService {
 
     @Override
     public List<ReportDto> findReportByUser(Long userId) {
-        //TODO Replace exception
+        //TODO Replace exception (no user found)
         User user = userRepository.findById(userId).orElseThrow(RuntimeException::new);
         List<Report> reports = reportRepository.findReportByUser(user);
         if(reports.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception(no data found)
             throw new RuntimeException();
         }
         return reports.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -60,12 +58,12 @@ public class ReportService implements IReportService {
 
     @Override
     public List<ReportDto> findReportByScooter(Long scooterId) {
-        //TODO Replace exception
+        //TODO Replace exception(no scooter found)
         Scooter scooter = scooterRepository.findById(scooterId).orElseThrow(RuntimeException::new);
         List<Report> reports = reportRepository.findReportByScooter(scooter);
         if(reports.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception(no data found)
             throw new RuntimeException();
         }
         return reports.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -73,11 +71,10 @@ public class ReportService implements IReportService {
 
     @Override
     public List<ReportDto> findReportByDate(LocalDate date) {
-        //TODO Replace exception
         List<Report> reports = reportRepository.findReportByDate(date);
         if(reports.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception (no data found)
             throw new RuntimeException();
         }
         return reports.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -85,12 +82,11 @@ public class ReportService implements IReportService {
 
     //TODO Check if this actually works
     @Override
-    public List<ReportDto> findReportByMonth(Month month) {
-        //TODO Replace exception
-        List<Report> reports = reportRepository.findReportByMonth(month);
+    public List<ReportDto> findReportBetween(LocalDate startDate, LocalDate endDate) {
+        List<Report> reports = reportRepository.findByDateBetween(startDate, endDate);
         if(reports.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception (no data found)
             throw new RuntimeException();
         }
         return reports.stream().map(this::convertToDto).collect(Collectors.toList());

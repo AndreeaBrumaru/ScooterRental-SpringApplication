@@ -12,5 +12,5 @@ public interface IReportService {
     List<ReportDto> findReportByUser(Long userId);
     List<ReportDto> findReportByScooter(Long scooterId);
     List<ReportDto> findReportByDate(LocalDate date);
-    List<ReportDto> findReportByMonth(Month month);
+    List<ReportDto> findReportBetween(LocalDate startDate, LocalDate endDate);
 }

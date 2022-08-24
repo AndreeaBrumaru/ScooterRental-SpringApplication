@@ -29,7 +29,7 @@ public class ScooterService implements IScooterService {
         List<Scooter> scooters = scooterRepository.findAvailableScooters();
         if(scooters.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception(no data found)
             throw new RuntimeException();
         }
         return scooters.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -42,7 +42,7 @@ public class ScooterService implements IScooterService {
         List<Scooter> scooters = scooterRepository.findAll();
         if(scooters.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception(no data found)
             throw new RuntimeException();
         }
         return scooters.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -53,7 +53,7 @@ public class ScooterService implements IScooterService {
         List<Scooter> scooters = scooterRepository.findScootersThatNeedCharging();
         if(scooters.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception (no data found)
             throw new RuntimeException();
         }
         return scooters.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -64,7 +64,7 @@ public class ScooterService implements IScooterService {
         List<Scooter> scooters = scooterRepository.findBrokenScooters();
         if(scooters.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception (no data found)
             throw new RuntimeException();
         }
         return scooters.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -75,7 +75,7 @@ public class ScooterService implements IScooterService {
         List<Scooter> scooters = scooterRepository.findDecommisionedScooters();
         if(scooters.isEmpty())
         {
-            //TODO Replace exception
+            //TODO Replace exception (no data found)
             throw new RuntimeException();
         }
         return scooters.stream().map(this::convertToDto).collect(Collectors.toList());
@@ -97,32 +97,61 @@ public class ScooterService implements IScooterService {
     }
 
     @Override
-    public void updateScooter(Long scooterId, Scooter updatedInfo) {
-        //TODO Test if null when not written in something
-        Scooter scooter = findScooterService(scooterId);
-        scooter.setInUse(updatedInfo.getInUse());
-        scooter.setBattery(updatedInfo.getBattery());
-        scooter.setTimeRidden(updatedInfo.getTimeRidden());
-        scooter.setCondition(updatedInfo.getCondition());
-        scooterRepository.save(scooter);
-    }
-
-    @Override
     public void deleteScooter(Long scooterId) {
-        //TODO Check what soft delete means
         Scooter scooter = findScooterService(scooterId);
-        scooter.setCondition(Condition.DECOMMISIONED);
+        scooter.setCondition(Condition.DECOMMISSIONED);
         scooterRepository.save(scooter);
     }
 
     @Override
     public void chargeAllScooters() {
         List<Scooter> scooters = scooterRepository.findScootersThatNeedCharging();
+        if(scooters.isEmpty())
+        {
+            //TODO Replace exception (no data found)
+            throw new RuntimeException();
+        }
         for(Scooter s : scooters)
         {
             s.setBattery(100);
+            s.setCondition(Condition.WORKING);
             scooterRepository.save(s);
         }
+    }
+
+    @Override
+    public void setBrokenScooter(Long scooterId) {
+        Scooter scooter = findScooterService(scooterId);
+        if(scooter.getCondition() == Condition.DECOMMISSIONED)
+        {
+            //TODO Replace exception (no scooter found)
+            throw new RuntimeException();
+        }
+        if(scooter.getCondition() == Condition.BROKEN)
+        {
+            //TODO Replace exception (scooter already broken)
+            throw new RuntimeException();
+        }
+        scooter.setCondition(Condition.BROKEN);
+        scooterRepository.save(scooter);
+    }
+
+    @Override
+    public void fixBrokenScooter (Long scooterId) {
+        Scooter scooter = findScooterService(scooterId);
+        if(scooter.getCondition() == Condition.DECOMMISSIONED)
+        {
+            //TODO Replace exception (no scooter found)
+            throw new RuntimeException();
+        }
+        if(scooter.getCondition() == Condition.WORKING || scooter.getCondition() == Condition.NEEDS_CHARGING)
+        {
+            //TODO Replace exception (scooter doesn't need to be fixed)
+            throw new RuntimeException();
+        }
+        scooter.setCondition(Condition.WORKING);
+        scooter.setBattery(100);
+        scooterRepository.save(scooter);
     }
 
     //Convert entity to Dto
@@ -134,7 +163,7 @@ public class ScooterService implements IScooterService {
     //Find scooter, used only by ScooterService
     private Scooter findScooterService(Long scooterId)
     {
-        //TODO Replace exception
+        //TODO Replace exception (no scooter found)
         return scooterRepository.findById(scooterId).orElseThrow(RuntimeException::new);
     }
 }

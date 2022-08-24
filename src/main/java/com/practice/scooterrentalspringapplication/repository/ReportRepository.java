@@ -21,7 +21,5 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
 
     @Query("SELECT r FROM Report r WHERE r.date = :date")
     List<Report> findReportByDate(LocalDate date);
-
-    @Query("SELECT r FROM Report r WHERE r.date = :month")
-    List<Report> findReportByMonth(Month month);
+    List<Report> findByDateBetween(LocalDate startDate, LocalDate endDate);
 }

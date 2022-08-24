@@ -18,8 +18,6 @@ public class User {
     @JoinColumn(name="scooterId", referencedColumnName = "scooterId")
     private Scooter scooter;
     private Boolean previousRidePaid;
-    @OneToMany(mappedBy = "user")
-    private Set<Report> orderHistory;
     private Boolean deleted;
 
     //I'd put password as well, but since this application isn't actually going to be used, and also I don't have a way
@@ -81,14 +79,6 @@ public class User {
 
     public void setPreviousRidePaid(Boolean previousRidePaid) {
         this.previousRidePaid = previousRidePaid;
-    }
-
-    public Set<Report> getOrderHistory() {
-        return orderHistory;
-    }
-
-    public void setOrderHistory(Set<Report> orderHistory) {
-        this.orderHistory = orderHistory;
     }
 
     //Equals and hashcode

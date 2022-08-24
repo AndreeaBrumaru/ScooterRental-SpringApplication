@@ -18,7 +18,8 @@ public interface IScooterService {
     List<ScooterDto> findDecommissionedScooters();
     ScooterDto findScooterById(Long scooterId);
     void addScooter();
-    void updateScooter(Long scooterId, Scooter updatedInfo);
     void deleteScooter(Long scooterId);
     void chargeAllScooters();
+    void setBrokenScooter(Long scooterId);
+    void fixBrokenScooter(Long scooterId);
 }

@@ -2,24 +2,39 @@ package com.practice.scooterrentalspringapplication.dto;
 
 import com.practice.scooterrentalspringapplication.model.Report;
 import com.practice.scooterrentalspringapplication.model.Scooter;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 import java.util.Set;
 
 public class UserDto {
     private Long userId;
+    @NotBlank(message = "Username is mandatory")
+    @Size(max = 25, message = "Username must have 25 characters maximum.")
     private String username;
+    @NotBlank(message = "CNP is mandatory.")
+    @Size(min = 13, max = 13, message = "CNP must be 13 characters long.")
+    private String CNP;
     private Scooter scooter;
-    private Set<Report> orderHistory;
 
     //Constructor
     public UserDto() {
     }
 
     //Getters and setters
+    public String getCNP() {
+        return CNP;
+    }
+
+    public void setCNP(String CNP) {
+        this.CNP = CNP;
+    }
+
     public Long getUserId() {
         return userId;
     }
@@ -42,14 +57,6 @@ public class UserDto {
 
     public void setScooter(Scooter scooter) {
         this.scooter = scooter;
-    }
-
-    public Set<Report> getOrderHistory() {
-        return orderHistory;
-    }
-
-    public void setOrderHistory(Set<Report> orderHistory) {
-        this.orderHistory = orderHistory;
     }
 
     //Equals and hashcode
