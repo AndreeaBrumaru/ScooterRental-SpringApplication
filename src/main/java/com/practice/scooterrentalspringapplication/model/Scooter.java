@@ -12,13 +12,13 @@ public class Scooter {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long scooterId;
     private Boolean inUse;
-    private Long battery;
-    private Time timeRidden;
+    private double battery;
+    private Long timeRidden;
     @Enumerated(EnumType.ORDINAL)
     private Condition condition;
 
     //Constructors
-    public Scooter(Boolean inUse, Long battery, Time timeRidden, Condition condition) {
+    public Scooter(Boolean inUse, double battery, Long timeRidden, Condition condition) {
         this.inUse = inUse;
         this.battery = battery;
         this.timeRidden = timeRidden;
@@ -45,20 +45,20 @@ public class Scooter {
         this.inUse = inUse;
     }
 
-    public Long getBattery() {
+    public double getBattery() {
         return battery;
     }
 
-    public void setBattery(Long battery) {
+    public void setBattery(double battery) {
         this.battery = battery;
     }
 
-    public Time getTimeRidden() {
+    public Long getTimeRidden() {
         return timeRidden;
     }
 
-    public void setTimeRidden(Time timeRiden) {
-        this.timeRidden = timeRiden;
+    public void setTimeRidden(Long timeRidden) {
+        this.timeRidden = timeRidden;
     }
 
     public Condition getCondition() {

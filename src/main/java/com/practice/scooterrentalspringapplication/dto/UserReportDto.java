@@ -7,20 +7,31 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 public class UserReportDto {
     private Long reportId;
     private Scooter scooter;
-    private Time minutesRidden;
+    private Long minutesRidden;
     private Long price;
     private Boolean paid;
+    private LocalDate date;
 
     //Constructor
     public UserReportDto() {
     }
 
     //Getters and setters
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     public Long getReportId() {
         return reportId;
     }
@@ -37,11 +48,11 @@ public class UserReportDto {
         this.scooter = scooter;
     }
 
-    public Time getMinutesRidden() {
+    public Long getMinutesRidden() {
         return minutesRidden;
     }
 
-    public void setMinutesRidden(Time minutesRidden) {
+    public void setMinutesRidden(Long minutesRidden) {
         this.minutesRidden = minutesRidden;
     }
 

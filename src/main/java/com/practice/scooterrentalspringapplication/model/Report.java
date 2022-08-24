@@ -1,7 +1,8 @@
 package com.practice.scooterrentalspringapplication.model;
 
 import javax.persistence.*;
-import java.sql.Time;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -16,10 +17,10 @@ public class Report {
     @ManyToOne
     @JoinColumn(name = "userId", nullable = false)
     private User user;
-    private Time minutesRidden;
+    private Long minutesRidden;
     private Long price;
     private Boolean paid;
-    private Long batteryLeft;
+    private LocalDate date;
     private String Notes;
 
     //Constructor
@@ -27,6 +28,14 @@ public class Report {
     }
 
     //Getters and setters
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     public Long getReportId() {
         return reportId;
     }
@@ -51,11 +60,11 @@ public class Report {
         this.user = user;
     }
 
-    public Time getMinutesRidden() {
+    public Long getMinutesRidden() {
         return minutesRidden;
     }
 
-    public void setMinutesRidden(Time minutesRidden) {
+    public void setMinutesRidden(Long minutesRidden) {
         this.minutesRidden = minutesRidden;
     }
 
@@ -73,14 +82,6 @@ public class Report {
 
     public void setPaid(Boolean paid) {
         this.paid = paid;
-    }
-
-    public Long getBatteryLeft() {
-        return batteryLeft;
-    }
-
-    public void setBatteryLeft(Long batteryLeft) {
-        this.batteryLeft = batteryLeft;
     }
 
     public String getNotes() {

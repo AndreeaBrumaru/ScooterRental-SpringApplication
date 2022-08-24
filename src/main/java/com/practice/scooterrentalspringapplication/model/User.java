@@ -20,6 +20,7 @@ public class User {
     private Boolean previousRidePaid;
     @OneToMany(mappedBy = "user")
     private Set<Report> orderHistory;
+    private Boolean deleted;
 
     //I'd put password as well, but since this application isn't actually going to be used, and also I don't have a way
     //to encrypt passwords, I thought it would be useless to include it.
@@ -34,6 +35,14 @@ public class User {
     }
 
     //Getters and setters
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
     public Long getUserId() {
         return userId;
     }

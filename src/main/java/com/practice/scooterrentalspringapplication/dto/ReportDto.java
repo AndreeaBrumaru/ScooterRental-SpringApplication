@@ -7,16 +7,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 public class ReportDto {
     private Long reportId;
     private Scooter scooter;
     private User user;
-    private Time minutesRidden;
+    private Long minutesRidden;
     private Long price;
     private Boolean paid;
-    private Long batteryLeft;
+    private LocalDate date;
     private String Notes;
 
     //Constructor
@@ -24,6 +26,14 @@ public class ReportDto {
     }
 
     //Getters and setters
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     public Long getReportId() {
         return reportId;
     }
@@ -48,11 +58,11 @@ public class ReportDto {
         this.user = user;
     }
 
-    public Time getMinutesRidden() {
+    public Long getMinutesRidden() {
         return minutesRidden;
     }
 
-    public void setMinutesRidden(Time minutesRidden) {
+    public void setMinutesRidden(Long minutesRidden) {
         this.minutesRidden = minutesRidden;
     }
 
@@ -70,14 +80,6 @@ public class ReportDto {
 
     public void setPaid(Boolean paid) {
         this.paid = paid;
-    }
-
-    public Long getBatteryLeft() {
-        return batteryLeft;
-    }
-
-    public void setBatteryLeft(Long batteryLeft) {
-        this.batteryLeft = batteryLeft;
     }
 
     public String getNotes() {

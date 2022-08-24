@@ -4,8 +4,11 @@ import com.practice.scooterrentalspringapplication.model.Scooter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import com.practice.scooterrentalspringapplication.model.enums.Condition;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public interface ScooterRepository extends JpaRepository<Scooter, Long> {
 
     //User methods
@@ -14,6 +17,11 @@ public interface ScooterRepository extends JpaRepository<Scooter, Long> {
     List<Scooter> findAvailableScooters();
 
     //Admin methods
+
+    @Override
+    @Query("SELECT s FROM Scooter s WHERE NOT s.condition = 3")
+    List<Scooter> findAll();
+
     @Query("SELECT s FROM Scooter s WHERE s.inUse = true")
     List<Scooter> findUsedScooters();
 
