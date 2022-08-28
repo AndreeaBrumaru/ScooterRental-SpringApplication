@@ -23,6 +23,14 @@ public class UserDto {
     private Scooter scooter;
 
     //Constructor
+
+    public UserDto(Long userId, String username, String CNP, Scooter scooter) {
+        this.userId = userId;
+        this.username = username;
+        this.CNP = CNP;
+        this.scooter = scooter;
+    }
+
     public UserDto() {
     }
 

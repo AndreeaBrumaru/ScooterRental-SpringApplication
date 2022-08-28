@@ -23,6 +23,14 @@ public class UserReportDto {
     public UserReportDto() {
     }
 
+    public UserReportDto(Scooter scooter, Long minutesRidden, Long price, Boolean paid, LocalDate date) {
+        this.scooter = scooter;
+        this.minutesRidden = minutesRidden;
+        this.price = price;
+        this.paid = paid;
+        this.date = date;
+    }
+
     //Getters and setters
     public LocalDate getDate() {
         return date;

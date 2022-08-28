@@ -22,6 +22,17 @@ public class ReportDto {
     private String Notes;
 
     //Constructor
+
+    public ReportDto(Scooter scooter, User user, Long minutesRidden, Long price, Boolean paid, LocalDate date, String notes) {
+        this.scooter = scooter;
+        this.user = user;
+        this.minutesRidden = minutesRidden;
+        this.price = price;
+        this.paid = paid;
+        this.date = date;
+        Notes = notes;
+    }
+
     public ReportDto() {
     }
 

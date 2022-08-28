@@ -18,6 +18,15 @@ public class Scooter {
     private Condition condition;
 
     //Constructors
+
+    public Scooter(Long scooterId, Boolean inUse, double battery, Long timeRidden, Condition condition) {
+        this.scooterId = scooterId;
+        this.inUse = inUse;
+        this.battery = battery;
+        this.timeRidden = timeRidden;
+        this.condition = condition;
+    }
+
     public Scooter(Boolean inUse, double battery, Long timeRidden, Condition condition) {
         this.inUse = inUse;
         this.battery = battery;

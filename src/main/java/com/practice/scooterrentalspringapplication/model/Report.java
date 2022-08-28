@@ -27,6 +27,16 @@ public class Report {
     public Report() {
     }
 
+    public Report(Scooter scooter, User user, Long minutesRidden, Long price, Boolean paid, LocalDate date, String notes) {
+        this.scooter = scooter;
+        this.user = user;
+        this.minutesRidden = minutesRidden;
+        this.price = price;
+        this.paid = paid;
+        this.date = date;
+        Notes = notes;
+    }
+
     //Getters and setters
     public LocalDate getDate() {
         return date;

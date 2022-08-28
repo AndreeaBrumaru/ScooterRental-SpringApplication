@@ -16,20 +16,13 @@ public interface ScooterRepository extends JpaRepository<Scooter, Long> {
     List<Scooter> findAvailableScooters();
 
     //Admin methods
-
     @Override
     @Query("SELECT s FROM Scooter s WHERE NOT s.condition = 3")
     List<Scooter> findAll();
-
-    @Query("SELECT s FROM Scooter s WHERE s.inUse = true")
-    List<Scooter> findUsedScooters();
-
     @Query("SELECT s FROM Scooter s WHERE s.condition = 1")
     List<Scooter> findScootersThatNeedCharging();
-
     @Query("SELECT s FROM Scooter s WHERE s.condition = 2")
     List<Scooter> findBrokenScooters();
-
     @Query("SELECT s FROM Scooter s WHERE s.condition = 3")
     List<Scooter> findDecommisionedScooters();
 }

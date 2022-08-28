@@ -24,6 +24,24 @@ public class User {
     //to encrypt passwords, I thought it would be useless to include it.
 
     //Constructors
+
+    public User(Long userId, String username, String CNP, Scooter scooter, Boolean previousRidePaid, Boolean deleted) {
+        this.userId = userId;
+        this.username = username;
+        this.CNP = CNP;
+        this.scooter = scooter;
+        this.previousRidePaid = previousRidePaid;
+        this.deleted = deleted;
+    }
+
+    public User(String username, String CNP, Scooter scooter, Boolean previousRidePaid, Boolean deleted) {
+        this.username = username;
+        this.CNP = CNP;
+        this.scooter = scooter;
+        this.previousRidePaid = previousRidePaid;
+        this.deleted = deleted;
+    }
+
     public User(String username, String CNP) {
         this.username = username;
         this.CNP = CNP;

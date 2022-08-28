@@ -14,12 +14,20 @@ public class ScooterDto {
     @Range(min = 0, max = 100, message = "Battery must be between 0 and 100 percent. " +
             "\nIf you managed otherwise you're either a god or the scooter is malfunctioning.")
     private Long battery;
-    private Time timeRidden;
+    private Long timeRidden;
     @NotBlank(message = "Condition is mandatory.")
     private Condition condition;
 
     //Constructors
     public ScooterDto() {
+    }
+
+    public ScooterDto(Long scooterId, Boolean inUse, Long battery, Long timeRidden, Condition condition) {
+        this.scooterId = scooterId;
+        this.inUse = inUse;
+        this.battery = battery;
+        this.timeRidden = timeRidden;
+        this.condition = condition;
     }
 
     //Getters and setters
@@ -47,11 +55,11 @@ public class ScooterDto {
         this.battery = battery;
     }
 
-    public Time getTimeRidden() {
+    public Long getTimeRidden() {
         return timeRidden;
     }
 
-    public void setTimeRidden(Time timeRidden) {
+    public void setTimeRidden(Long timeRidden) {
         this.timeRidden = timeRidden;
     }
 
