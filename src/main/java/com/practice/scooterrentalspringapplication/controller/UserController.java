@@ -2,17 +2,12 @@ package com.practice.scooterrentalspringapplication.controller;
 
 import com.practice.scooterrentalspringapplication.dto.UserDto;
 import com.practice.scooterrentalspringapplication.dto.UserReportDto;
-import com.practice.scooterrentalspringapplication.model.Report;
 import com.practice.scooterrentalspringapplication.model.User;
 import com.practice.scooterrentalspringapplication.service.interfaces.IUserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @RestController

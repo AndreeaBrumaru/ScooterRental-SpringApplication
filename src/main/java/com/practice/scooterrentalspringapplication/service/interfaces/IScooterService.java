@@ -1,9 +1,6 @@
 package com.practice.scooterrentalspringapplication.service.interfaces;
 
 import com.practice.scooterrentalspringapplication.dto.ScooterDto;
-import com.practice.scooterrentalspringapplication.model.Scooter;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 public interface IScooterService {

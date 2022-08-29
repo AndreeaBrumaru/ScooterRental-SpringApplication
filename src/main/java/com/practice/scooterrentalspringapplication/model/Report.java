@@ -2,7 +2,6 @@ package com.practice.scooterrentalspringapplication.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity

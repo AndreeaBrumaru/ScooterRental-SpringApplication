@@ -4,7 +4,6 @@ import com.practice.scooterrentalspringapplication.dto.ScooterDto;
 import com.practice.scooterrentalspringapplication.model.Scooter;
 import com.practice.scooterrentalspringapplication.model.enums.Condition;
 import com.practice.scooterrentalspringapplication.service.interfaces.IScooterService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -15,9 +14,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
 import java.util.Arrays;
-
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -32,13 +29,8 @@ public class ScooterControllerTest {
     @MockBean
     private ModelMapper modelMapper;
 
-    private ScooterDto s1;
-    private ScooterDto s2;
-    private ScooterDto s5;
-    private ScooterDto s6;
-    private ScooterDto s7;
-    private Scooter s3;
-    private Scooter s4;
+    private ScooterDto s1, s2, s5, s6, s7;
+    private Scooter s3, s4;
 
     @BeforeEach
     public void init()

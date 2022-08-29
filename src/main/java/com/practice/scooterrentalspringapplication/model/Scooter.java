@@ -2,7 +2,6 @@ package com.practice.scooterrentalspringapplication.model;
 
 import com.practice.scooterrentalspringapplication.model.enums.Condition;
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.Objects;
 
 @Entity
@@ -18,7 +17,6 @@ public class Scooter {
     private Condition condition;
 
     //Constructors
-
     public Scooter(Long scooterId, Boolean inUse, double battery, Long timeRidden, Condition condition) {
         this.scooterId = scooterId;
         this.inUse = inUse;

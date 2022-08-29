@@ -1,6 +1,5 @@
 package com.practice.scooterrentalspringapplication.service.interfaces;
 
-import com.practice.scooterrentalspringapplication.dto.ReportDto;
 import com.practice.scooterrentalspringapplication.dto.UserDto;
 import com.practice.scooterrentalspringapplication.dto.UserReportDto;
 import com.practice.scooterrentalspringapplication.model.User;
@@ -12,6 +11,7 @@ public interface IUserService {
     void payRide(Long userId);
     void startRide(Long scooterId, Long userId, Long timeRidden);
     void endRide(Long userId, Boolean paid, String notes);
+
     //Admin methods
     List<UserDto> findUsersDebts();
     List<UserDto> findAll();

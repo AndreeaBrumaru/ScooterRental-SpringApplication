@@ -2,9 +2,7 @@ package com.practice.scooterrentalspringapplication.dto;
 
 import com.practice.scooterrentalspringapplication.model.enums.Condition;
 import org.hibernate.validator.constraints.Range;
-
 import javax.validation.constraints.NotBlank;
-import java.sql.Time;
 import java.util.Objects;
 
 public class ScooterDto {

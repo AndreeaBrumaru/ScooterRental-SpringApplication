@@ -2,13 +2,10 @@ package com.practice.scooterrentalspringapplication.controller;
 
 import com.practice.scooterrentalspringapplication.dto.ScooterDto;
 import com.practice.scooterrentalspringapplication.model.Scooter;
-import com.practice.scooterrentalspringapplication.service.ScooterService;
 import com.practice.scooterrentalspringapplication.service.interfaces.IScooterService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController

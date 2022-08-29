@@ -1,7 +1,6 @@
 package com.practice.scooterrentalspringapplication.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.practice.scooterrentalspringapplication.dto.ScooterDto;
 import com.practice.scooterrentalspringapplication.dto.UserDto;
 import com.practice.scooterrentalspringapplication.dto.UserReportDto;
 import com.practice.scooterrentalspringapplication.model.Report;
@@ -9,7 +8,6 @@ import com.practice.scooterrentalspringapplication.model.Scooter;
 import com.practice.scooterrentalspringapplication.model.User;
 import com.practice.scooterrentalspringapplication.model.enums.Condition;
 import com.practice.scooterrentalspringapplication.service.interfaces.IUserService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -20,11 +18,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.List;
-
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -38,20 +33,11 @@ public class UserControllerTest {
     private IUserService userService;
     @MockBean
     private ModelMapper modelMapper;
-    private Scooter s1;
-    private Scooter s2;
-    private Scooter s3;
-    private Scooter s4;
-    private UserDto u1;
-    private UserDto u2;
-    private User u3;
-    private User u4;
-    private User u5;
-    private Report r1;
+    private Scooter s1, s2, s3, s4;
+    private UserDto u1, u2;
+    private User u3, u4, u5;
+    private Report r1, r3, r4;
     private UserReportDto r2;
-    private Report r3;
-    private Report r4;
-
 
     @BeforeEach
     public void init()

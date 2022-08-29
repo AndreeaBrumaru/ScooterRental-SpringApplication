@@ -1,8 +1,6 @@
 package com.practice.scooterrentalspringapplication.controller;
 
 import com.practice.scooterrentalspringapplication.dto.ReportDto;
-import com.practice.scooterrentalspringapplication.dto.UserDto;
-import com.practice.scooterrentalspringapplication.dto.UserReportDto;
 import com.practice.scooterrentalspringapplication.model.Report;
 import com.practice.scooterrentalspringapplication.model.Scooter;
 import com.practice.scooterrentalspringapplication.model.User;
@@ -18,12 +16,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.JsonPathResultMatchers;
-
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.List;
-
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;

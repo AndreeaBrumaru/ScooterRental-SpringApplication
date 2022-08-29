@@ -1,16 +1,9 @@
 package com.practice.scooterrentalspringapplication.dto;
 
-import com.practice.scooterrentalspringapplication.model.Report;
 import com.practice.scooterrentalspringapplication.model.Scooter;
-import org.hibernate.validator.constraints.Range;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
-import java.util.Set;
 
 public class UserDto {
     private Long userId;
@@ -23,7 +16,6 @@ public class UserDto {
     private Scooter scooter;
 
     //Constructor
-
     public UserDto(Long userId, String username, String CNP, Scooter scooter) {
         this.userId = userId;
         this.username = username;

@@ -1,10 +1,7 @@
 package com.practice.scooterrentalspringapplication.model;
 
-import com.practice.scooterrentalspringapplication.model.Scooter;
-
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -24,7 +21,6 @@ public class User {
     //to encrypt passwords, I thought it would be useless to include it.
 
     //Constructors
-
     public User(Long userId, String username, String CNP, Scooter scooter, Boolean previousRidePaid, Boolean deleted) {
         this.userId = userId;
         this.username = username;

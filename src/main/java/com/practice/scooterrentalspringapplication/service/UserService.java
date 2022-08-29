@@ -14,7 +14,6 @@ import com.practice.scooterrentalspringapplication.service.interfaces.IUserServi
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +33,6 @@ public class UserService implements IUserService {
     }
 
     //User methods
-    //find user orders
     @Override
     public List<UserReportDto> findReportsByUser(Long userId) {
         User user = findUserService(userId);

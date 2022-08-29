@@ -1,14 +1,7 @@
 package com.practice.scooterrentalspringapplication.dto;
 
 import com.practice.scooterrentalspringapplication.model.Scooter;
-import com.practice.scooterrentalspringapplication.model.User;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 public class UserReportDto {

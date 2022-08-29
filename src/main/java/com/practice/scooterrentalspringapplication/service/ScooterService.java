@@ -27,7 +27,6 @@ public class ScooterService implements IScooterService {
     }
 
     //User methods
-    //Find all available scooters
     @Override
     public List<ScooterDto> findAvailableScooters() {
         List<Scooter> scooters = scooterRepository.findAvailableScooters();
