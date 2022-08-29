@@ -29,6 +29,10 @@ public class UserRepositoryTest {
     @BeforeEach
     public void init()
     {
+        reportRepository.deleteAll();
+        userRepository.deleteAll();
+        scooterRepository.deleteAll();
+
         s1 = new Scooter(false, 100, null, Condition.WORKING);
         s2 = new Scooter(false, 80, null, Condition.WORKING);
         s3 = new Scooter(true, 45, 15L, Condition.WORKING);
@@ -76,7 +80,6 @@ public class UserRepositoryTest {
     @Test
     public void findUserDebts()
     {
-        //TODO Why are there doubles?
         List<User> users = userRepository.findUserDebts();
         Assertions.assertNotNull(users);
         Assertions.assertEquals(Arrays.asList(u3, u4), users);

@@ -31,6 +31,10 @@ public class ReportRepositoryTest {
     @BeforeEach
     public void init()
     {
+        reportRepository.deleteAll();
+        userRepository.deleteAll();
+        scooterRepository.deleteAll();
+
         s1 = new Scooter(false, 100, null, Condition.WORKING);
         s2 = new Scooter(false, 80, null, Condition.WORKING);
         s3 = new Scooter(true, 45, 15L, Condition.WORKING);
@@ -68,7 +72,6 @@ public class ReportRepositoryTest {
     @Test
     public void findReportByDate()
     {
-        //TODO Why are there doubles?
         List<Report> reports = reportRepository.findReportByDate(LocalDate.of(2022, 12, 23));
         Assertions.assertEquals(Arrays.asList(r1), reports);
     }

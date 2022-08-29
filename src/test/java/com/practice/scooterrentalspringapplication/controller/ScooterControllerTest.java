@@ -148,7 +148,6 @@ public class ScooterControllerTest {
                 .andExpect(status().isOk());
     }
 
-    //TODO This method return passed no mmatter what
     @Test
     public void setBroken() throws Exception
     {
