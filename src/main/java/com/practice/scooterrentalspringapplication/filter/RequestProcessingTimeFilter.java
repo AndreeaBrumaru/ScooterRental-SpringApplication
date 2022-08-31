@@ -15,7 +15,7 @@ import java.io.IOException;
 @Component
 @Order(3)
 public class RequestProcessingTimeFilter extends GenericFilterBean {
-    private final static Logger LOG = LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
+    private final static Logger LOG = LoggerFactory.getLogger(RequestProcessingTimeFilter.class);
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {

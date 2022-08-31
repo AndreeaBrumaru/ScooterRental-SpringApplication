@@ -19,7 +19,7 @@ import java.io.IOException;
 @Order(5)
 public class ContentSecurityPolicyFilter extends RequestContextFilter {
 
-    private final static Logger LOG = LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
+    private final static Logger LOG = LoggerFactory.getLogger(ContentSecurityPolicyFilter.class);
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

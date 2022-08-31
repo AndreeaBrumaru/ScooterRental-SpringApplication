@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class RequestPostJsonBodyFilter  implements Filter {
 
-    private final static Logger LOG = LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
+    private final static Logger LOG = LoggerFactory.getLogger(RequestPostJsonBodyFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

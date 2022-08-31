@@ -19,7 +19,7 @@ import java.io.IOException;
 @Order(6)
 public class CacheControlFilter extends RequestContextFilter {
 
-    private final static Logger LOG = LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
+    private final static Logger LOG = LoggerFactory.getLogger(CacheControlFilter.class);
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
