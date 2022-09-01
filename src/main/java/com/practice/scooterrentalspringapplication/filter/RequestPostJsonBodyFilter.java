@@ -15,7 +15,7 @@ public class RequestPostJsonBodyFilter  implements Filter {
 
     private final static Logger LOG = LoggerFactory.getLogger(RequestPostJsonBodyFilter.class);
 
-    @Override
+    //@Override
     public void init(FilterConfig filterConfig) throws ServletException {
         LOG.info("Initializing filter: {}", this);
     }

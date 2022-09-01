@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link href="http://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+  <title>Scooter Rental Application | User Page</title>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="container-fluid col-8 card">
+        <div class="card-body">
+          <h2 class="card-title">Welcome to the admin page!</h2>
+          <a class="btn btn-primary" role="button" href="/user/scooters">See all available scooters</a>
+          <a class="btn btn-primary" role="button" href="#">Start ride</a>
+          <a class="btn btn-primary" role="button" href="#">End ride</a>
+          <a class="btn btn-primary" role="button" href="#">Pay previous ride</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

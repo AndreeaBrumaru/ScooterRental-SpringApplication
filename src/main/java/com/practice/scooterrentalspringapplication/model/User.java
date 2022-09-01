@@ -10,15 +10,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
     private String username;
+    private String password;
     private String CNP;
     @OneToOne
     @JoinColumn(name="scooterId", referencedColumnName = "scooterId")
     private Scooter scooter;
     private Boolean previousRidePaid;
     private Boolean deleted;
-
-    //I'd put password as well, but since this application isn't actually going to be used, and also I don't have a way
-    //to encrypt passwords, I thought it would be useless to include it.
 
     //Constructors
     public User(Long userId, String username, String CNP, Scooter scooter, Boolean previousRidePaid, Boolean deleted) {
@@ -47,6 +45,14 @@ public class User {
     }
 
     //Getters and setters
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Boolean getDeleted() {
         return deleted;
     }

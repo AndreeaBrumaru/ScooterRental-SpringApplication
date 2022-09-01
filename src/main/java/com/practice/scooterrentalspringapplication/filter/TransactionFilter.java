@@ -23,7 +23,7 @@ public class TransactionFilter implements Filter {
         LOG.info("Committing transaction for req: {}", req.getRequestURI());
     }
 
-    @Override
+    //@Override
     public void init(FilterConfig filterConfig) throws ServletException {
         LOG.info("Initializing filter: {}", this);
     }

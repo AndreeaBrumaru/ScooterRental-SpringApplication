@@ -20,7 +20,7 @@ public class ScooterController {
     }
 
     //User methods
-    @GetMapping("/scooters")
+    @GetMapping("/user/scooters")
     public List<ScooterDto> findAvailableScooters()
     {
         return scooterService.findAvailableScooters();

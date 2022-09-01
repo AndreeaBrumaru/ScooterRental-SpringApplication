@@ -22,27 +22,27 @@ public class UserController {
     }
 
     //User methods
-    @GetMapping("/users/{userId}/reports")
+    @GetMapping("/user/{userId}/reports")
     public List<UserReportDto> findReportsOfUser(@PathVariable Long userId)
     {
         return userService.findReportsByUser(userId);
     }
 
-    @PutMapping("/users/{userId}/payRide")
+    @PutMapping("/user/{userId}/payRide")
     public ResponseEntity<String> payPreviousUnpaidRide(@PathVariable Long userId)
     {
         userService.payRide(userId);
         return ResponseEntity.ok("Previous unpaid ride paid successfully.");
     }
 
-    @PostMapping("/users/{userId}/{scooterId}/{minutesRidden}/start")
+    @PostMapping("/user/{userId}/{scooterId}/{minutesRidden}/start")
     public ResponseEntity<String> startRide(@PathVariable Long userId, @PathVariable Long scooterId, @PathVariable Long minutesRidden)
     {
         userService.startRide(scooterId, userId, minutesRidden);
         return ResponseEntity.ok("Ride started.");
     }
 
-    @PutMapping("/users/{userId}/end")
+    @PutMapping("/user/{userId}/end")
     public ResponseEntity<String> endRide(@PathVariable Long userId, @RequestParam Boolean paid, @RequestParam(required = false) String notes)
     {
         userService.endRide(userId, paid, notes);

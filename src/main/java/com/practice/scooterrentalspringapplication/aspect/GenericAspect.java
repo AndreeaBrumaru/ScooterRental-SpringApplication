@@ -1,5 +1,6 @@
 package com.practice.scooterrentalspringapplication.aspect;
 
+import com.practice.scooterrentalspringapplication.exception.ScooterNotFoundException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -53,11 +54,10 @@ public class GenericAspect {
     }
 
     //After Aspects
-    //TODO Why doesn't this work?
-    @AfterThrowing("within(com.practice.scooterrentalspringapplication.*)")
-    public void logExceptions(JoinPoint joinPoint)
+    @AfterThrowing(pointcut = "execution(* com.practice.scooterrentalspringapplication.service.ScooterService.*(..))", throwing = "ex")
+    public void logExceptions(ScooterNotFoundException ex)
     {
-        LOG.info("Exception thrown in: " + joinPoint.toString());
+        LOG.info("Exception thrown in: " + ex.getMessage());
     }
 
     //Around aspects

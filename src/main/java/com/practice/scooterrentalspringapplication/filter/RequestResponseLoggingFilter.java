@@ -19,7 +19,7 @@ public class RequestResponseLoggingFilter implements Filter {
         LOG.info("Logging response: {}", res.getContentType());
     }
 
-    @Override
+    //@Override
     public void init(FilterConfig filterConfig) throws ServletException {
         LOG.info("Initializing filter: {}", this);
     }

@@ -1,4 +1,4 @@
-package com.practice.scooterrentalspringapplication;
+package com.practice.scooterrentalspringapplication.filter;
 
 import com.practice.scooterrentalspringapplication.filter.RequestPostJsonBodyFilter;
 import com.practice.scooterrentalspringapplication.filter.RequestResponseLoggingFilter;

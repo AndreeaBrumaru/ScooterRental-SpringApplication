@@ -4,6 +4,8 @@ import com.practice.scooterrentalspringapplication.model.Scooter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Repository
@@ -14,7 +16,9 @@ public interface ScooterRepository extends JpaRepository<Scooter, Long> {
     List<Scooter> findAvailableScooters();
 
     //Admin methods
+    //TODO Rename method
     @Override
+    @NotNull
     @Query("SELECT s FROM Scooter s WHERE NOT s.condition = 3")
     List<Scooter> findAll();
 
