@@ -41,7 +41,7 @@ public class ScooterService implements IScooterService {
     @Override
     public List<ScooterDto> findAllScooters()
     {
-        List<Scooter> scooters = scooterRepository.findAll();
+        List<Scooter> scooters = scooterRepository.findAllScooters();
         if(scooters.isEmpty())
         {
             throw new NoDataFoundException();

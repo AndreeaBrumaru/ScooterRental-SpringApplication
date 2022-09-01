@@ -53,7 +53,7 @@ public class UserController {
     @GetMapping("/admin/users")
     public List<UserDto> findAllUsers()
     {
-        return userService.findAll();
+        return userService.findAllUsers();
     }
 
     @GetMapping("/admin/users/debts")

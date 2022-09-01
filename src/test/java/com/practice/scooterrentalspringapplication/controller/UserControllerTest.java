@@ -86,7 +86,7 @@ public class UserControllerTest {
     public void findAllUsers() throws Exception
     {
         //GIVEN
-        Mockito.when(userService.findAll()).thenReturn(Arrays.asList(u1, u2));
+        Mockito.when(userService.findAllUsers()).thenReturn(Arrays.asList(u1, u2));
 
         //WHEN
         mvc.perform(MockMvcRequestBuilders.get("/admin/users/")

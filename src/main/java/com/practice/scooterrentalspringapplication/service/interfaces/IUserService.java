@@ -14,7 +14,7 @@ public interface IUserService {
 
     //Admin methods
     List<UserDto> findUsersDebts();
-    List<UserDto> findAll();
+    List<UserDto> findAllUsers();
     UserDto findById(Long userId);
     void addUser(User user);
     void updateUser(Long userId, String username);

@@ -24,19 +24,11 @@ public class UserDetailServiceConfig {
     {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
 
-//        List<User> users = userRepository.findAll();
-//        for(com.practice.scooterrentalspringapplication.model.User u :users)
-//        {
-//            manager.createUser(org.springframework.security.core.userdetails.User.withUsername(u.getUsername()).password(bCryptPasswordEncoder.encode(u.getPassword())).roles("USER").build());
-//        }
         manager.createUser(org.springframework.security.core.userdetails.User.withUsername("user").password(bCryptPasswordEncoder.encode("password")).roles("USER").build());
 
         manager.createUser(org.springframework.security.core.userdetails.User.withUsername("admin").password(bCryptPasswordEncoder.encode("password")).roles("USER", "ADMIN").build());
         return manager;
     }
-
-    //TODO Calluri http catre alte api-uri
-
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {

@@ -36,9 +36,9 @@ public class ScooterRepositoryTest {
     }
 
     @Test
-    public void findAll()
+    public void findAllScooters()
     {
-        List<Scooter> scooters = scooterRepository.findAll();
+        List<Scooter> scooters = scooterRepository.findAllScooters();
         Assertions.assertEquals(Arrays.asList(s1, s2, s3, s4, s6), scooters);
     }
 

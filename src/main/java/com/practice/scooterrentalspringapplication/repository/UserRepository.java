@@ -18,8 +18,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Report findUnpaidOrder(User user);
 
     //Admin methods
+    User findByUsername(String username);
+
     @Query("SELECT u FROM User u WHERE u.deleted = false")
-    List<User> findAll();
+    List<User> findAllUsers();
 
     @Query("SELECT u FROM User u WHERE u.previousRidePaid = false")
     List<User> findUserDebts();

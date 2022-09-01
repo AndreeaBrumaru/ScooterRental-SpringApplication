@@ -134,8 +134,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<UserDto> findAll() {
-        List<User> users = userRepository.findAll();
+    public List<UserDto> findAllUsers() {
+        List<User> users = userRepository.findAllUsers();
         if(users.isEmpty())
         {
             throw new NoDataFoundException();

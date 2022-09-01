@@ -16,11 +16,8 @@ public interface ScooterRepository extends JpaRepository<Scooter, Long> {
     List<Scooter> findAvailableScooters();
 
     //Admin methods
-    //TODO Rename method
-    @Override
-    @NotNull
     @Query("SELECT s FROM Scooter s WHERE NOT s.condition = 3")
-    List<Scooter> findAll();
+    List<Scooter> findAllScooters();
 
     @Query("SELECT s FROM Scooter s WHERE s.condition = 1")
     List<Scooter> findScootersThatNeedCharging();

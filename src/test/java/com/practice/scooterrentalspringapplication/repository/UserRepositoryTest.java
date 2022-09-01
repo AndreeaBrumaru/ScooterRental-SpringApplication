@@ -70,9 +70,9 @@ public class UserRepositoryTest {
     }
 
     @Test
-    public void findAll()
+    public void findAllUsers()
     {
-        List<User> users = userRepository.findAll();
+        List<User> users = userRepository.findAllUsers();
         Assertions.assertNotNull(users);
         Assertions.assertEquals(Arrays.asList(u1, u2, u3), users);
     }

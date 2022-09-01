@@ -61,7 +61,6 @@ public class GenericAspect {
     }
 
     //Around aspects
-    //TODO For some reason it doesn't work on findAll methods
     @Around("execution(* com.practice.scooterrentalspringapplication.repository.*.find*())")
     public Object genericAroundAdviceNoParam(ProceedingJoinPoint proceedingJoinPoint)
     {
